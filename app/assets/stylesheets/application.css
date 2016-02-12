@@ -411,6 +411,11 @@ background-color: #1F2E4D !important;
   width: 100%;
 }
 
+.userPlaylist {
+  width: 95%;
+  margin: 0 auto;
+}
+
 #playlist {
   width: 100%;
   margin: 0 auto;

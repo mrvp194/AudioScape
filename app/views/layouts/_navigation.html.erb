@@ -31,11 +31,7 @@
 			</ul>
 		</div>
 		<div class="nav-bar-right">
-	    <% if @playlist.user == current_user %>
-	    <a id='new-song' href="/playlists/<%=@playlist.id%>/songs/new">
-	    <% else %>
 	    <a id="new-playlists" href="/playlists">
-	    <% end %>
 			<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="300.000000pt" height="300.000000pt" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet">
 				<g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#D9D9D9" stroke="none">
 				<path d="M1435 2986 c-40 -17 -82 -67 -95 -114 -6 -23 -10 -250 -10 -619 l0 -583 -582 0 c-395 0 -596 -4 -623 -11 -52 -15 -111 -74 -120 -122 -17 -87 36 -173 120 -196 27 -7 228 -11 623 -11 l582 0 0 -582 c0 -395 4 -596 11 -623 15 -52 74 -111 122 -120 87 -17 173 36 196 120 7 27 11 228 11 623 l0 582 583 0 c394 0 595 4 622 11 84 23 137 109 120 196 -9 48 -68 107 -120 122 -27 7 -228 11 -622 11 l-583 0 0 583 c0 369 -4 596 -10 619 -28 100 -134 154 -225 114z"/>
