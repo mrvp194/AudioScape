@@ -1,0 +1,43 @@
+<div class="now_playing">
+
+	<p class="welcome"><%= @playlist.title %></p>
+
+
+	<img src="<%= @playlist.art_url %>"/>
+	<div class='playlistButtons'>
+  <a id='playPlaylist' href="">Play</a>
+  <%= link_to 'Delete Playlist', playlist_path(@playlist),
+          method: :delete,
+          data: { confirm: "Are you sure?" }, :class => "delete"%>
+
+  <%= link_to "Tag Location", new_playlist_location_path(@playlist), :class => "tag" %>
+  </div>
+
+
+</div>
+<% if current_user == @playlist.user %>
+<div id='<%= @playlist.id %>' class="playlist_locations current_user">
+<% else %>
+<div id='<%= @playlist.id %>' class="playlist_locations">
+<% end %>
+
+	<% @playlist.taggings.each do |tag| %> 
+		<li><%= link_to tag.location.name, playlist_location_path(tag.playlist, tag.location) %></li>
+	<% end %>
+</div>
+
+
+<br />
+
+<div class="playlist">
+
+	<div id="playlist">
+
+		<% @playlist.songs.each do |song| %>
+			<%= render partial: 'songs/mini_groove_song_card', locals: {user: @playlist.user, track: song, title: song.title, url: song.link, coverart: song.coverart}%>
+		<% end %>
+	</div>
+
+
+</div>
+

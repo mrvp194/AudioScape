@@ -1,0 +1,25 @@
+<div class="search_songs">
+
+	<%= form_for :songs, url: {action: 'search'}, html: {method: 'get', :id => 'search-songs'} do |f| %>
+		<%= f.text_field :title, :placeholder => "Find a song" %>
+		<%= f.submit "Search" %>
+
+	<% end %>
+</div>
+
+<% @artist_search_results.each do |song| %>
+	<% if song.streamable %>
+	<%= link_to playlist_songs_path(@playlist, song_id: song.id, song_name: song.title, song_artist: 'placeholder', coverart: song.artwork_url), :class => 'add-song' do %>
+		<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+		<div class='song-cards'>
+			<% unless song.artwork_url == nil %>
+				<img class="th searchart" src="<%= song.artwork_url %>" />
+			<% else %>
+				<img class="th searchart" src="http://static7.depositphotos.com/1001655/707/v/950/depositphotos_7070089-Woman-with-music-notes.jpg" />
+			<%end%>
+
+			<p>&nbsp&nbsp<%= truncate(song.title, :length => 50)  %></p>
+		</div>
+	<%end%>
+	<% end %>
+<%end%>

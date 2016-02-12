@@ -1,0 +1,22 @@
+<div class="welcome">
+<p class="welcome"> Playlists nearby </p>
+<div class="playlist_find">
+
+  <% if @current_users_around.empty? %>
+    <p class="welcome">No users currently. Please try again later</p>
+  <% end %>
+
+  <% @current_users_around.each do |u| %>
+    <% @playlist = u.playlists.last %>
+      <% if @playlist %>
+        <div class="playlists">
+          <!-- <%= u.username %></br> -->
+          <%= link_to playlist_path(@playlist), class: 'playlists-around' do %>
+            <div class="cover" style="background-image: url(<%=@playlist.art_url%>);"></div>
+
+          <% end %>
+        </div>
+      <% end %>
+  <% end %>
+</div>
+</div>

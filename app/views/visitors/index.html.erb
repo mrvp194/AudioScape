@@ -1,0 +1,47 @@
+<div class="something">
+  <div class="welcome"><p class='welcome'><%= current_user.username.capitalize %>'s recent playlists</p></div>
+  <div class="user_playlists">
+    <% if @playlists.length > 0 %>
+      <% @last_playlists.each do |playlist| %>
+
+      
+        <%= link_to playlist_path(playlist), :class => 'playlistCover' do %>
+        <!-- <img class="userSearchart" src="<%= playlist.art_url %>"/> -->
+        <div class="cover" style="background-image: url(<%=playlist.art_url%>);"></div>
+
+        <% end %>
+        <% end %>
+        <% if @playlists.length > 6 %>
+        <div id='loadMore'>
+          Load All
+        </div>
+        <% end %>
+      <% @other_playlists.each do |playlist| %>
+
+        <%= link_to playlist_path(playlist), :class => 'playlistCover' do %>
+          <div class="hiddenCover" style="background-image: url(<%=playlist.art_url%>);"></div>
+        <% end %>
+      <% end %>
+        <div id='hide'>
+          Hide
+        </div>
+    <% else %>
+      
+    <% end %>
+  </div>
+
+  <div class="random_playlist" id='playlist'>
+    <p class="welcome">Random Songs Around You</p>
+      <ul>
+        <% if find_random_local_songs.class.name == "Array" %>
+          <% find_random_local_songs.each do |song| %>
+            <%= render partial: 'songs/mini_groove_song_card', locals: {user: song[0], track: song[1], title: song[1].title, url: song[1].link, coverart: song[1].coverart} %>
+
+          <% end %>
+        <% else %>
+          <p class="result"><%= find_random_local_songs %><p>
+        <% end %>
+  </div>
+</div>
+
+
