@@ -10,7 +10,6 @@
     <% @playlist = u.playlists.last %>
       <% if @playlist %>
         <div class="playlists">
-          <!-- <%= u.username %></br> -->
           <%= link_to playlist_path(@playlist), class: 'playlists-around' do %>
             <div class="cover" style="background-image: url(<%=@playlist.art_url%>);"></div>
 

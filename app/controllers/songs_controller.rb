@@ -16,7 +16,6 @@ class SongsController < ApplicationController
       :client_secret => "7d39770bb6a7a580e69658cfef542d3b"
     })
     @groove_song = Song.find(params[:id])
-    # @groove_url = client.get(@groove_song.link, allow_redirects: true)
     @groove_url = @groove_song.link
   end
 

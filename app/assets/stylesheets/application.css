@@ -26,19 +26,8 @@
   width: 20%;
  }
 
-/* .accordion .content {
-  overflow: hidden;
- }*/
-
-/* i {
-  color: #005F6B;
- }*/
-
  #logo {
-  /*margin-top: 10%;*/
-  /*margin-left: 5%;*/
   width: 90%;
-  /*height: auto;*/
   margin: 0 auto;
   padding-top: 5%;
  }
@@ -61,7 +50,6 @@
   display: none;
   z-index: 1;
   position: fixed;
-  /*overflow: inherit;*/
   background-color: #606078;
   max-width: 70%;
   min-width: 40%;
@@ -78,11 +66,8 @@
 
  .neste li {
   padding: 11%;
-  /*text-align: center;*/
   padding-left: 7%;
-  /*font-size: 120%;*/
   font-size: 5vmin;
-  /*overflow: auto;*/
   white-space: nowrap;
  }
 
@@ -100,9 +85,7 @@
   background-color: #00B4CC;
   border-radius: 2px;
   width: 100%;
-  /*height: 20%;*/
   padding-bottom: 1%;
-  /*overflow: hidden;*/
   position: fixed;
   margin-bottom: 2%;
   display: inline-block;
@@ -114,7 +97,6 @@
   width: 35%;
   margin-left: 10px;
   margin-top: 12px;
-  /*color: #D9D9D9;*/
  }
 
  .nav-bar-center {
@@ -131,14 +113,10 @@
 
  .nav-bar-right {
   float: right;
-  /*position: fixed;*/
   margin-right: 10%;
   margin-bottom: 10%;
  }
 
-/* #new-playlist {
-  float: right;
- }*/
 
  #new-playlists svg {
   height: 7%;
@@ -166,8 +144,6 @@
   height: 10%;
   margin-left: 5%;
   margin-bottom: 2.5%;
-   /*stroke: #D9D9D9;*/
-   /*stroke-width: 1;*/
  }
 
  #last {
@@ -236,9 +212,6 @@
   text-decoration: underline;
   font-size: 5vmin;
   font-family: 'Ruda', sans-serif;
-
-  /*margin-top: 10%;*/
-  /*display: block;*/
 }
 
 img {
@@ -250,13 +223,10 @@ form {
 }
 
 input[type=submit] {
-  /*padding:5px 15px; */
   background: #9F0A28; 
   border: 0 none;
   border-radius: 25px;
-  /*cursor: pointer;*/
   margin: 0 auto;
-  /*text-align: center;*/
   display: block;
   font-family: 'Ruda', sans-serif;
   font-size: 6vmin;
@@ -267,7 +237,6 @@ input[type=submit] {
 }
 
 .playlistButtons {
-  /*width: 35%;*/
   display: inline-block;
   padding-left: 5%;
 }
@@ -282,7 +251,6 @@ input[type=submit] {
   width: 70%;
   text-align: center;
   margin: 20% auto 4%;
-  /*height: 40px;*/
 }
 
 .delete {
@@ -355,8 +323,6 @@ input[type=submit] {
 }
 
 .userSearchart {
-/*  max-height: 200px;
-  max-width: 180px;*/
   width: 100%;
   height: auto;
   float: left;
@@ -370,15 +336,11 @@ input[type=submit] {
 }
 
 .cover {
-  /*width: 700px;
-  height: 700px;*/
   display: inline;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  /*overflow: hidden;*/
   width: 45%;
-  /*height: 45%;*/
   min-height: 200px;
   float: left;
   margin-left: 3.5%;
@@ -387,15 +349,11 @@ input[type=submit] {
 }
 
 .hiddenCover {
-  /*width: 700px;
-  height: 700px;*/
   display: none;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  /*overflow: hidden;*/
   width: 45%;
-  /*height: 45%;*/
   min-height: 200px;
   float: left;
   margin-left: 3.5%;
@@ -406,43 +364,28 @@ input[type=submit] {
 #loadMore {
   background: #9F0A28; 
   display: table;
-  /*bottom: 0;*/
   border-radius: 20px;
   font-family: 'Ruda', sans-serif;
   font-size: 5vmin;
   color: #D9D9D9;
-  /*width: 200px!important;*/
-  /*overflow: ;*/
   text-align: center;
   margin: 0 auto;
   padding: 3%;
   clear: both;
-  /*height: 150px;*/
 }
 
 #hide {
   background: #9F0A28; 
   display: none;
-  /*bottom: 0;*/
   border-radius: 20px;
   font-family: 'Ruda', sans-serif;
   font-size: 5vmin;
   color: #D9D9D9;
-  /*width: 200px!important;*/
-  /*overflow: ;*/
   text-align: center;
   margin: 0 auto;
   padding: 3%;
-  /*height: 150px;*/
   clear: left;
 }
-/*
-#loadmore div {
-  display: block;
-
-}*/
-
-
 
 footer {
     display: block;
@@ -450,7 +393,6 @@ footer {
 		position:fixed;
 		bottom:0;
 		left:0;
-    /*background-color: white;*/
     z-index: 1;
 }
 
@@ -467,7 +409,6 @@ background-color: #1F2E4D !important;
 .container {
   padding-bottom: 100px;
   width: 100%;
-  /*text-align: center;*/
 }
 
 #playlist {
@@ -493,12 +434,7 @@ background-color: #1F2E4D !important;
 }
 
 .now_playing img {
-  /*margin-left: 5%;*/
-  /*margin-top: 5%;*/
   width: 55%;
-  /*top: 0;*/
-  /*display: inline-block;*/
-  /*display: inline;*/
   vertical-align: top;
 }
 
@@ -549,7 +485,6 @@ background-color: #1F2E4D !important;
    display: inline;
    padding-top: 5%;
    float: left;
-   /*margin-left: 1%; */
    font-family: 'Ruda', sans-serif;
    font-size: 4vmin;
    width: 70%;
@@ -561,11 +496,6 @@ background-color: #1F2E4D !important;
   margin-bottom: 10px;
  }
 
-/* .add-song {
-  width: 95%;
-  margin: 0 auto;
- }
-*/
  .active {
   color: #9F0A28 !important;
   border: 1px;
@@ -603,7 +533,6 @@ background-color: #1F2E4D !important;
   position: relative;
   padding-top: 10%;
   padding-bottom: 20%;
-  /*top: 0;*/
   display: inline-block;
 }
 

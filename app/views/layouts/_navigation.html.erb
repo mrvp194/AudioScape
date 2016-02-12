@@ -1,61 +1,58 @@
 <div class="nav-bar">
 	<div class="nav-bar-left">
-	<!-- 	<ul class="vertical menu accordion" data-accordion>
-			<li class="accordion-navigation"> -->
-			<!-- <div data-role='collapsible'> -->
-				<div id='menu'>
-					<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="300.000000pt" height="300.000000pt" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet">
-						<g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#D9D9D9" stroke="none">
-							<path d="M328 2430 c-45 -14 -83 -41 -108 -78 -20 -29 -25 -48 -25 -102 0 -79 26 -125 90 -162 l40 -23 1165 -3 1164 -2 51 25 c73 36 100 81 100 165 0 84 -27 129 -99 165 l-50 25 -1150 -1 c-633 0 -1163 -4 -1178 -9z"/>
-							<path d="M328 1680 c-45 -14 -83 -41 -108 -78 -20 -29 -25 -48 -25 -102 0 -84 27 -129 99 -165 l50 -25 1156 0 1156 0 50 25 c72 36 99 81 99 165 0 84 -27 129 -99 165 l-50 25 -1150 -1 c-633 0 -1163 -4 -1178 -9z"/>
-							<path d="M294 915 c-72 -36 -99 -81 -99 -165 0 -84 27 -129 99 -165 l50 -25 1156 0 1156 0 50 25 c72 36 99 81 99 165 0 84 -27 129 -99 165 l-50 25 -1156 0 -1156 0 -50 -25z"/>
-						</g>
-					</svg>
-				</div>
-				<!-- <div id='panel' class="content"> -->
-					<ul class="neste">
-						<li>
-							<%= link_to 'Home', root_path, :id => 'home' %>
-						</li>
+		<div id='menu'>
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="300.000000pt" height="300.000000pt" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet">
+				<g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#D9D9D9" stroke="none">
+					<path d="M328 2430 c-45 -14 -83 -41 -108 -78 -20 -29 -25 -48 -25 -102 0 -79 26 -125 90 -162 l40 -23 1165 -3 1164 -2 51 25 c73 36 100 81 100 165 0 84 -27 129 -99 165 l-50 25 -1150 -1 c-633 0 -1163 -4 -1178 -9z"/>
+					<path d="M328 1680 c-45 -14 -83 -41 -108 -78 -20 -29 -25 -48 -25 -102 0 -84 27 -129 99 -165 l50 -25 1156 0 1156 0 50 25 c72 36 99 81 99 165 0 84 -27 129 -99 165 l-50 25 -1150 -1 c-633 0 -1163 -4 -1178 -9z"/>
+					<path d="M294 915 c-72 -36 -99 -81 -99 -165 0 -84 27 -129 99 -165 l50 -25 1156 0 1156 0 50 25 c72 36 99 81 99 165 0 84 -27 129 -99 165 l-50 25 -1156 0 -1156 0 -50 -25z"/>
+				</g>
+			</svg>
+		</div>
+		<ul class="neste">
+			<li>
+				<%= link_to 'Home', root_path, :id => 'home' %>
+			</li>
 
-						<% if user_signed_in? %>
-							<li>
-								<%= link_to 'Edit Profile', edit_user_registration_path, :id => 'user' %>
-							</li>
-							<li>
-								<%= link_to "Find Playlists", playlists_find_path, :id => 'find-playlist' %>
-							</li>
-    					<li>
-    						<%= link_to "New Playlist", new_playlist_path, :id => 'new-playlist'  %>
-    					</li>
-							<li>
-								<%= link_to 'Exit', destroy_user_session_path, :method=>'delete', :id => 'signout' %>
-							</li>
-							</ul>
-							</div>
-							<div class="nav-bar-right">
-							    <% if @playlist.user == current_user %>
-							    <a id='new-song' href="/playlists/<%=@playlist.id%>/songs/new">
-							    <% else %>
-							    <a id="new-playlists" href="/playlists">
-							    <% end %>
-									<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="300.000000pt" height="300.000000pt" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet">
-										<g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#D9D9D9" stroke="none">
-										<path d="M1435 2986 c-40 -17 -82 -67 -95 -114 -6 -23 -10 -250 -10 -619 l0 -583 -582 0 c-395 0 -596 -4 -623 -11 -52 -15 -111 -74 -120 -122 -17 -87 36 -173 120 -196 27 -7 228 -11 623 -11 l582 0 0 -582 c0 -395 4 -596 11 -623 15 -52 74 -111 122 -120 87 -17 173 36 196 120 7 27 11 228 11 623 l0 582 583 0 c394 0 595 4 622 11 84 23 137 109 120 196 -9 48 -68 107 -120 122 -27 7 -228 11 -622 11 l-583 0 0 583 c0 369 -4 596 -10 619 -28 100 -134 154 -225 114z"/>
-										</g>
-										</svg>
-									</a>
-							</div>
-						<% else %>
-							<li>
-								<%= link_to 'Login', new_user_session_path, :id => 'signin' %>
-							</li>
-							<li>
-								<%= link_to 'Join', new_user_registration_path, :id => 'signup' %>
-							</li>
-							</ul>
-							</div>
-						<% end %>
+<% if user_signed_in? %>
+
+				<li>
+					<%= link_to 'Edit Profile', edit_user_registration_path, :id => 'user' %>
+				</li>
+				<li>
+					<%= link_to "Find Playlists", playlists_find_path, :id => 'find-playlist' %>
+				</li>
+				<li>
+					<%= link_to "New Playlist", new_playlist_path, :id => 'new-playlist'  %>
+				</li>
+				<li>
+					<%= link_to 'Exit', destroy_user_session_path, :method=>'delete', :id => 'signout' %>
+				</li>
+			</ul>
+		</div>
+		<div class="nav-bar-right">
+	    <% if @playlist.user == current_user %>
+	    <a id='new-song' href="/playlists/<%=@playlist.id%>/songs/new">
+	    <% else %>
+	    <a id="new-playlists" href="/playlists">
+	    <% end %>
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="300.000000pt" height="300.000000pt" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet">
+				<g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#D9D9D9" stroke="none">
+				<path d="M1435 2986 c-40 -17 -82 -67 -95 -114 -6 -23 -10 -250 -10 -619 l0 -583 -582 0 c-395 0 -596 -4 -623 -11 -52 -15 -111 -74 -120 -122 -17 -87 36 -173 120 -196 27 -7 228 -11 623 -11 l582 0 0 -582 c0 -395 4 -596 11 -623 15 -52 74 -111 122 -120 87 -17 173 36 196 120 7 27 11 228 11 623 l0 582 583 0 c394 0 595 4 622 11 84 23 137 109 120 196 -9 48 -68 107 -120 122 -27 7 -228 11 -622 11 l-583 0 0 583 c0 369 -4 596 -10 619 -28 100 -134 154 -225 114z"/>
+				</g>
+				</svg>
+			</a>
+		</div>
+	<% else %>
+		<li>
+			<%= link_to 'Login', new_user_session_path, :id => 'signin' %>
+		</li>
+		<li>
+			<%= link_to 'Join', new_user_registration_path, :id => 'signup' %>
+		</li>
+		</ul>
+		</div>
+	<% end %>
 						<div class="nav-bar-center">
 							<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="300.000000pt" height="300.000000pt" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet">
 								<g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)" fill="#D9D9D9" stroke="none">
@@ -67,11 +64,5 @@
 								</g>
 								</svg>
 						</div>
-					<!-- </ul> -->
-				<!-- </div> -->
-			<!-- </li>
-		</ul> -->
-	<!-- </div> -->
-
-</div>
+				</div>
 

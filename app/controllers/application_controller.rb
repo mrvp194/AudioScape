@@ -4,25 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
  def current_users_around
-
-
-    # base_uri = 'https://blinding-fire-43.firebaseio.com/'
-    # firebase = Firebase::Client.new(base_uri)
     @users_around = current_user.nearbys(10)
-    # users = User.all
     @current_users_around = @users_around.where(updated_at: (24.hour.ago..Time.now))
-
-    # users.each do |u|
-
-    #   body = firebase.get("user#{u.id.to_s}").body
-    #   current_user_body = firebase.get("user#{current_user.id.to_s}").body
-
-
-    #   if body && current_user_body
-    #     this_user_point = body['l']
-    #     current_user_point = current_user_body['l']
-    #     user_time = (body['datetime'] || 1.second.ago)
-    #     if 1.hour.ago < user_time
   end
 
   helper_method :current_users_around

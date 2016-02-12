@@ -46,13 +46,11 @@ $(document).ready(function() {
         $('.container').remove()
         $('header').remove()
 
-        // var r = $.parseHTML(response)
         var $header = $(response).filter('header')
         var $container = $(response).filter('.container')
         console.log($header)
         $('body').append($header)
         $('body').append($container)
-        // init()
 
       })
   })
@@ -92,8 +90,6 @@ $(document).ready(function() {
   $('body').on('submit', '#new_playlist', function(event) {
     event.preventDefault()
     var myUrl = $(this).attr('action')
-    // var s = $(this).serialize()
-    // console.log($(this).serialize())
     $.ajax({type: 'post', url: myUrl, data: $(this).serialize()})
       .done(function(response) {
         $('.container').remove()
@@ -136,22 +132,14 @@ $(document).ready(function() {
   })
 
   $('body').on('click', '.add-song', function(event) {
-    // var myUrl = $(this).parent().attr('href')
     var auth = $(this).find('input').serialize()
-    // console.log(auth)
     var params = $(this).attr('href').match(/\?(.+)/)[1]
     var myUrl = $(this).attr('href').match(/^(.*)\?/)[1]
-    // console.log(myUrl)
-    // console.log(params)
-    // var data = myUrl.match
     event.preventDefault()
     $.post(myUrl, params, function(response) {
-      // .done(function(response) {
         $('.container').remove()
-        // event.preventDefault()
         $('body').append($('<div>').addClass('container row').append(response))
       })
-    // event.preventDefault()
   })
 
   $('body').on('click', '#find-playlist', function(event) {
@@ -176,10 +164,6 @@ $(document).ready(function() {
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.container').remove()
-        // $('header').remove()
-        // var $header = $(response).filter('header')
-        // var $container = $(response).filter('.container')
-        // $('body').append($header)
         $('body').append($('<div>').addClass('container row').append(response))
       })
   })
@@ -194,7 +178,6 @@ $(document).ready(function() {
     }
     $.ajax({type: 'get', url: myUrl})
     .done(function(response) {
-      // $('header').remove()
       $('.container').remove()
 
       $('body').append($('<div>').addClass('container row').append(response))
@@ -265,23 +248,8 @@ getLocation()
 
 
 
-// init();
-// function init(){
     current = 0;
-    // audio = $('#audio');
-    // playlist = $('#playlist');
-    // tracks = playlist.find('.songcard .song').clone();
-    // titles = $('.title').clone()
-    // titles.addClass('clickable')
-    // $('#tracks').append(titles)
-    // $('#secret-playlist').find('a').remove()
-    // $div = $('footer').find('#secret-playlist')
-    // $('#secret-playlist').append(tracks)
-
-    // len = tracks.length;
     audio = new Audio()
-    // audio[0].volume = .50;
-    // audio[0].play();
     $('body').on('click', '.song', function(e){
       e.preventDefault();
       link = $(this);
@@ -290,10 +258,7 @@ getLocation()
       var t = $('#tracks').has('#'+$(title).attr('id'))
       if ($('#tracks').has('#'+$(title).attr('id')).length === 0) {
         $('#tracks').append(title)   
-            // tracks = playlist.find('.songcard .song').clone();
-   
       };
-      // console.log(link)
       playlist = $('#playlist');
       tracks = playlist.find('.songcard .song').clone();
       len = tracks.length;
@@ -317,8 +282,6 @@ getLocation()
     })
 
     $('body').on('click', '.clickable', function(event) {
-      // $(this).addClass('active').siblings().removeClass('active')
-      // $('#'+$(this).attr('id')).parent().parent().parent().addClass('active').siblings().removeClass('active')
       current = $(this).index();
       run($(this), audio)
     })
@@ -413,15 +376,6 @@ function run(link, player){
 
       });
 };
-
-// function nextSong(link, player) {
-//   current = link.
-// }
-
-
-
-
-
 })
 
 $(function(){ $(document).foundation(); });
