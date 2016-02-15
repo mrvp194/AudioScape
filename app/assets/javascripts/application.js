@@ -266,6 +266,7 @@ getLocation()
       run(link, audio);
     });
     $('body').on('click', '#play', function(event) {
+      event.preventDefault();
       if (audio.src) {
         $('#play').toggle();
         $('#pause').toggle();
@@ -273,11 +274,13 @@ getLocation()
       };  
     })
     $('body').on('click', '#pause', function(event) {
+      event.preventDefault();
       $('#play').toggle();
       $('#pause').toggle();
       audio.pause();
     })
     $('body').on('click', '#viewPlaylist', function(event) {
+      event.preventDefault();
       $('#tracks').toggle();
     })
 
@@ -297,14 +300,12 @@ getLocation()
       $('#tracks').append(titles)
       len = tracks.length;
       link = tracks[0]
-      console.log($(track).parent().siblings()[0])
       $(track).parent().addClass('active')
       $(track).parent().siblings().removeClass('active')
       run($(link), audio)
     })
     $('body').on('click', '#next', function(event) {
-      console.log(current)
-      console.log(len)
+      event.preventDefault();
       current++
       if(current == len){
             current = 0;
@@ -313,10 +314,10 @@ getLocation()
         }else{
             link = $('#tracks').find('.title')[current];
         }
-        console.log($(link))
         run($(link),audio);
     })
     $('body').on('click', '#last', function(event) {
+      event.preventDefault();
       current--
       if(current === 0){
             current = len;
@@ -325,7 +326,6 @@ getLocation()
         }else{
             link = $('#tracks').find('.title')[current];
         }
-        console.log($(link))
         run($(link),audio);
     })
     $('body').on('click', '#shuffle', function(event) {
@@ -344,7 +344,6 @@ getLocation()
         }else{
             link = $('#tracks').find('.title')[current];
         }
-        console.log($(link))
         run($(link),audio);
     });
 // }
@@ -359,7 +358,6 @@ function run(link, player){
   }else {
     trackUri = 'https://api.soundcloud.com/tracks/'+link.attr('id')+'/streams?client_id=bb3b960126fc0ee3ec16de768439927f';
     link.addClass('active').siblings().removeClass('active')
-    console.log()
     $('.songcard').has('#'+link.attr('id')).addClass('active').siblings().removeClass('active')
   }
 
@@ -371,7 +369,7 @@ function run(link, player){
           $('#pause').toggle();      
         };
         player.src = result.http_mp3_128_url;
-        player.load();
+        // player.load();
         player.play();
 
       });
