@@ -250,7 +250,7 @@ getLocation()
 
     current = 0;
     audio = $('audio')[0]
-    console.log(audio)
+    audio.volume = 1;
     $('body').on('touchend click', '.song', function(e){
       e.preventDefault();
       link = $(this);
