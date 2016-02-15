@@ -249,7 +249,8 @@ getLocation()
 
 
     current = 0;
-    audio = new Audio()
+    audio = $('audio')[0]
+    console.log(audio)
     $('body').on('click', '.song', function(e){
       e.preventDefault();
       link = $(this);
@@ -349,6 +350,7 @@ getLocation()
     });
 // }
 function run(link, player){
+  getLocation();
   if (link.attr('href')) {
     trackUri = 'https://api.soundcloud.com/tracks/'+link.attr('href').replace('http://localhost:3000', '')+'/streams?client_id=bb3b960126fc0ee3ec16de768439927f';
       var bottomLink = $('#tracks').find('#'+link.attr('href'))
