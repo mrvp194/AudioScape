@@ -352,7 +352,7 @@ getLocation()
 function run(link, player){
   getLocation();
   if (link.attr('href')) {
-    trackUri = 'https://api.soundcloud.com/tracks/'+link.attr('href').replace('http://localhost:3000', '')+'/streams?client_id=bb3b960126fc0ee3ec16de768439927f';
+    trackUri = 'https://api.soundcloud.com/tracks/'+link.attr('href').replace('http://audioscape1.herokuapp.com', '')+'/streams?client_id=bb3b960126fc0ee3ec16de768439927f';
       var bottomLink = $('#tracks').find('#'+link.attr('href'))
       bottomLink.addClass('active').siblings().removeClass('active');
       par = link.parent();
