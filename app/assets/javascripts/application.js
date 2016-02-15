@@ -329,6 +329,7 @@ getLocation()
         run($(link),audio);
     })
     $('body').on('click', '#shuffle', function(event) {
+      event.preventDefault();
       var newOrder = shuffle($('#tracks').find('div'))
       $('#tracks').empty()
       $('#tracks').append(newOrder)
