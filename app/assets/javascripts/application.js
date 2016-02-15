@@ -23,7 +23,7 @@
 $(document).ready(function() {
 
 
-  $('body').on('click', '#menu', function(event) {
+  $('body').on('touchstart click', '#menu', function(event) {
     $('.neste').toggle();
     // console.log($('.content'))
     // console.log($('.is-active'))
@@ -251,7 +251,7 @@ getLocation()
     current = 0;
     audio = $('audio')[0]
     console.log(audio)
-    $('body').on('click', '.song', function(e){
+    $('body').on('touchstart click', '.song', function(e){
       e.preventDefault();
       link = $(this);
       var title = $($($(this).children()[1]).children()[0]).clone()
@@ -266,7 +266,7 @@ getLocation()
       current = link.parent().index();
       run(link, audio);
     });
-    $('body').on('click', '#play', function(event) {
+    $('body').on('touchstart click', '#play', function(event) {
       event.preventDefault();
       if (audio.src) {
         $('#play').toggle();
@@ -274,22 +274,22 @@ getLocation()
         audio.play();
       };  
     })
-    $('body').on('click', '#pause', function(event) {
+    $('body').on('touchstart click', '#pause', function(event) {
       event.preventDefault();
       $('#play').toggle();
       $('#pause').toggle();
       audio.pause();
     })
-    $('body').on('click', '#viewPlaylist', function(event) {
+    $('body').on('touchstart click', '#viewPlaylist', function(event) {
       event.preventDefault();
       $('#tracks').toggle();
     })
 
-    $('body').on('click', '.clickable', function(event) {
+    $('body').on('touchstart click', '.clickable', function(event) {
       current = $(this).index();
       run($(this), audio)
     })
-    $('body').on('click', '#playPlaylist', function(event) {
+    $('body').on('touchstart click', '#playPlaylist', function(event) {
       event.preventDefault()
       current = 0
       $($('#tracks')[0]).empty()
@@ -305,7 +305,7 @@ getLocation()
       $(track).parent().siblings().removeClass('active')
       run($(link), audio)
     })
-    $('body').on('click', '#next', function(event) {
+    $('body').on('touchstart click', '#next', function(event) {
       event.preventDefault();
       current++
       if(current == len){
@@ -317,7 +317,7 @@ getLocation()
         }
         run($(link),audio);
     })
-    $('body').on('click', '#last', function(event) {
+    $('body').on('touchstart click', '#last', function(event) {
       event.preventDefault();
       current--
       if(current === 0){
@@ -329,7 +329,7 @@ getLocation()
         }
         run($(link),audio);
     })
-    $('body').on('click', '#shuffle', function(event) {
+    $('body').on('touchstart click', '#shuffle', function(event) {
       event.preventDefault();
       var newOrder = shuffle($('#tracks').find('div'))
       $('#tracks').empty()
