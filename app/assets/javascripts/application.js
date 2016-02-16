@@ -207,8 +207,9 @@ var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
   var userId = $("div[style='display:none']").attr('id')
   var firebaseRef = new Firebase("https://blinding-fire-43.firebaseio.com/");
   var geo_options = {
-  enableHighAccuracy: true,
-  };
+                      enableHighAccuracy: true,
+                      timeout: 5000
+                    };
 
   var currentdate = new Date();
 
@@ -234,7 +235,7 @@ var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
 
 
 
-getLocation()
+// getLocation()
 
   var audio;
   var playlist;

@@ -16,10 +16,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     location = request.location
-    puts @user
-    puts current_user
-    @user.latitude = location.latitude
-    @user.longitude = location.longitude
+    if location
+      @user.latitude = location.latitude
+      @user.longitude = location.longitude
+    else
+      @user.latitude = 41.881777
+      @user.longitude = -87.637146    
+    end
     @user.save
   end
 
