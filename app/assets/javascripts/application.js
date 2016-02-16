@@ -395,7 +395,9 @@ function run(link, player){
 
       });
       if (audio.paused) {
-        audio.play()      
+        $('#play').toggle();
+        $('#pause').toggle();       
+        audio.play() 
       };
 };
 })
