@@ -249,11 +249,15 @@ getLocation()
     current = 0;
     audio = $('audio')[0]
     audio.volume = 1;
-    $('body').on(clickEventType, '.song', function(e){
+    $('body').on('click', '.song', function(e){
       e.preventDefault();
       link = $(this);
       var title = $($($(this).children()[1]).children()[0]).clone()
-      title.addClass('clickable')
+      console.log(title)
+      var a = $('<a>'+title[0].innerHTML+'</a>')
+      title[0].innerHTML = ''
+      a.addClass('clickable')
+      title.append(a)
       var t = $('#tracks').has('#'+$(title).attr('id'))
       if ($('#tracks').has('#'+$(title).attr('id')).length === 0) {
         $('#tracks').append(title)   
@@ -283,9 +287,11 @@ getLocation()
       $('#tracks').toggle();
     })
 
-    $('body').on(clickEventType, '.clickable', function(event) {
+    $('body').on('click', '.clickable', function(event) {
+      tracks = playlist.find('.songcard .song').clone();
+      len = tracks.length;
       current = $(this).index();
-      run($(this), audio)
+      run($(this).parent(), audio)
     })
     $('body').on(clickEventType, '#playPlaylist', function(event) {
       event.preventDefault()
@@ -295,9 +301,17 @@ getLocation()
       tracks = playlist.find('.songcard .song').clone();
       track = playlist.find('.songcard .song')[0]
       titles = $('.title').clone()
-      titles.addClass('clickable')
-      $('#tracks').append(titles)
+      titles.each(function(i,t) {
+        console.log(t)
+        var a = $('<a>'+t.innerHTML+'</a>')
+        console.log(a.innerHTML)
+        t.innerHTML = ''
+        a.addClass('clickable')
+        $(t).append(a)
+        $('#tracks').append(t)              
+      })
       len = tracks.length;
+      console.log(len)
       link = tracks[0]
       $(track).parent().addClass('active')
       $(track).parent().siblings().removeClass('active')
@@ -305,10 +319,11 @@ getLocation()
     })
     $('body').on(clickEventType, '#next', function(event) {
       event.preventDefault();
+      tracks = playlist.find('.songcard .song').clone();
+      len = tracks.length;
       current++
       if(current == len){
             current = 0;
-            console.log('done')
             link = $('#tracks').find('.title')[0];
         }else{
             link = $('#tracks').find('.title')[current];
@@ -317,11 +332,14 @@ getLocation()
     })
     $('body').on(clickEventType, '#last', function(event) {
       event.preventDefault();
+      tracks = playlist.find('.songcard .song').clone();
+      len = tracks.length;
       current--
       if(current === 0){
-            current = len;
-            console.log('done')
             link = $('#tracks').find('.title')[0];
+        }else if(current < 0){
+          current = len-1
+          link = $('#tracks').find('.title')[current]
         }else{
             link = $('#tracks').find('.title')[current];
         }
@@ -364,7 +382,6 @@ function run(link, player){
 
     $.get(encodeURI(trackUri))
       .then(function (result) {
-        console.debug(result);
         if (player.paused) {
           $('#play').toggle();
           $('#pause').toggle();      
