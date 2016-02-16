@@ -273,6 +273,7 @@ getLocation()
       if (audio.src) {
         $('#play').toggle();
         $('#pause').toggle();
+        // audio.load();
         audio.play();
       };  
     })
@@ -387,7 +388,7 @@ function run(link, player){
           $('#pause').toggle();      
         };
         player.src = result.http_mp3_128_url;
-        player.load();
+        // player.load();
         player.play();
 
       });
