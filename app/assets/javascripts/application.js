@@ -22,12 +22,10 @@
 // });
 $(document).ready(function() {
 
+var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
 
-  $('body').on('touchend click', '#menu', function(event) {
+  $('body').on(clickEventType, '#menu', function(event) {
     $('.neste').toggle();
-    // console.log($('.content'))
-    // console.log($('.is-active'))
-    // console.log($(this))
   })
   $('body').on('click', '.neste', function(event) {
     $('.neste').hide();
@@ -251,7 +249,7 @@ getLocation()
     current = 0;
     audio = $('audio')[0]
     audio.volume = 1;
-    $('body').on('touchend click', '.song', function(e){
+    $('body').on(clickEventType, '.song', function(e){
       e.preventDefault();
       link = $(this);
       var title = $($($(this).children()[1]).children()[0]).clone()
@@ -266,7 +264,7 @@ getLocation()
       current = link.parent().index();
       run(link, audio);
     });
-    $('body').on('touchend click', '#play', function(event) {
+    $('body').on(clickEventType, '#play', function(event) {
       event.preventDefault();
       if (audio.src) {
         $('#play').toggle();
@@ -274,22 +272,22 @@ getLocation()
         audio.play();
       };  
     })
-    $('body').on('touchend click', '#pause', function(event) {
+    $('body').on(clickEventType, '#pause', function(event) {
       event.preventDefault();
       $('#play').toggle();
       $('#pause').toggle();
       audio.pause();
     })
-    $('body').on('touchend click', '#viewPlaylist', function(event) {
+    $('body').on(clickEventType, '#viewPlaylist', function(event) {
       event.preventDefault();
       $('#tracks').toggle();
     })
 
-    $('body').on('touchend click', '.clickable', function(event) {
+    $('body').on(clickEventType, '.clickable', function(event) {
       current = $(this).index();
       run($(this), audio)
     })
-    $('body').on('touchend click', '#playPlaylist', function(event) {
+    $('body').on(clickEventType, '#playPlaylist', function(event) {
       event.preventDefault()
       current = 0
       $($('#tracks')[0]).empty()
@@ -305,7 +303,7 @@ getLocation()
       $(track).parent().siblings().removeClass('active')
       run($(link), audio)
     })
-    $('body').on('touchend click', '#next', function(event) {
+    $('body').on(clickEventType, '#next', function(event) {
       event.preventDefault();
       current++
       if(current == len){
@@ -317,7 +315,7 @@ getLocation()
         }
         run($(link),audio);
     })
-    $('body').on('touchend click', '#last', function(event) {
+    $('body').on(clickEventType, '#last', function(event) {
       event.preventDefault();
       current--
       if(current === 0){
@@ -329,7 +327,7 @@ getLocation()
         }
         run($(link),audio);
     })
-    $('body').on('touchend click', '#shuffle', function(event) {
+    $('body').on(clickEventType, '#shuffle', function(event) {
       event.preventDefault();
       var newOrder = shuffle($('#tracks').find('div'))
       $('#tracks').empty()
