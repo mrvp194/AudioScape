@@ -39,7 +39,7 @@ console.log(clickEventType)
     event.preventDefault()
 
     var myUrl = $(this).attr('href')
-    history.pushState(null, null, myUrl)
+    history.pushState({tag: true}, null, myUrl)
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.container').remove()
@@ -58,7 +58,7 @@ console.log(clickEventType)
     event.preventDefault()
 
     var myUrl = $(this).attr('href')
-    history.pushState(null, null, myUrl)
+    history.pushState({tag: true}, null, myUrl)
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.container').remove()
@@ -75,7 +75,7 @@ console.log(clickEventType)
   $('body').on('click', '#new-playlist', function(event) {
     event.preventDefault()
     var myUrl = $(this).attr('href')
-    history.pushState(null, null, myUrl)
+    history.pushState({tag: true}, null, myUrl)
 
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
@@ -95,7 +95,7 @@ console.log(clickEventType)
   $('body').on('submit', '#image_search', function(event) {
     event.preventDefault()
     var myUrl = $(this).attr('action')
-    history.pushState(null, null, myUrl+'?'+decodeURIComponent($(this).serialize()).replace('utf8=%25E2%259C%2593&', ''))
+    history.pushState({tag: true}, null, myUrl+'?'+decodeURIComponent($(this).serialize()).replace('utf8=%25E2%259C%2593&', ''))
     // console.log(myUrl)
     // console.log($(this).serialize())
     $.ajax({type: 'get', url: myUrl, data: $(this).serialize()})
@@ -113,7 +113,7 @@ console.log(clickEventType)
   $('body').on('click', '.btn', function(event) {
     event.preventDefault()
     var myUrl = $(this).attr('href')
-    history.pushState(null, null, myUrl)
+    history.pushState({tag: true}, null, myUrl)
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.image-results').remove()
@@ -128,7 +128,7 @@ console.log(clickEventType)
   $('body').on('click', '#new-song', function(event) {
     event.preventDefault()
     var myUrl = $(this).attr('href')
-    history.pushState(null, null, myUrl)
+    history.pushState({tag: true}, null, myUrl)
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.container').remove()
@@ -146,7 +146,7 @@ console.log(clickEventType)
   $('body').on('click', '.playlistCover', function(event) {
     event.preventDefault()
     var myUrl = $(this).attr('href')
-    history.pushState(null, null, myUrl)
+    history.pushState({tag: true}, null, myUrl)
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.container').remove()
@@ -165,7 +165,7 @@ console.log(clickEventType)
     event.preventDefault()
 
     var myUrl = $(this).attr('action')
-    history.pushState(null, null, myUrl)
+    history.pushState({tag: true}, null, myUrl)
     $.ajax({type: 'get', url: myUrl, data: $(this).serialize()})
       .done(function(response) {
         $('.container').remove()
@@ -182,7 +182,7 @@ console.log(clickEventType)
   $('body').on('click', '.add-song', function(event) {
     var params = $(this).attr('href').match(/\?(.+)/)[1]
     var myUrl = $(this).attr('href').match(/^(.*)\?/)[1]
-    history.pushState(null, null, $(this).attr('href'))
+    history.pushState({tag: true}, null, $(this).attr('href'))
     event.preventDefault()
     $.post(myUrl, params, function(response) {
         $('.container').remove()
@@ -199,7 +199,7 @@ console.log(clickEventType)
   $('body').on('click', '.new_playlists', function(event) {
     var params = $(this).attr('href').match(/\?(.+)/)[1]
     var myUrl = $(this).attr('href').match(/^(.*)\?/)[1]
-    history.pushState(null, null, $(this).attr('href'))
+    history.pushState({tag: true}, null, $(this).attr('href'))
     event.preventDefault()
     $.post(myUrl, params, function(response) {
         $('.container').remove()
@@ -217,7 +217,7 @@ console.log(clickEventType)
     event.preventDefault()
 
     var myUrl = $(this).attr('href')
-    history.pushState(null, null, myUrl)
+    history.pushState({tag: true}, null, myUrl)
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.container').remove()
@@ -233,7 +233,7 @@ console.log(clickEventType)
     event.preventDefault()
 
     var myUrl = $(this).attr('href')
-    history.pushState(null, null, myUrl)
+    history.pushState({tag: true}, null, myUrl)
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.container').remove()
@@ -252,10 +252,10 @@ console.log(clickEventType)
     if ($('.current_user').length > 0) {
       var id = $('.playlist_locations').attr('id')
       var myUrl = $(this).attr('href')+'/'+id+'/songs/new'
-      history.pushState(null, null, myUrl)
+      history.pushState({tag: true}, null, myUrl)
     }else {
       var myUrl = $(this).attr('href')+'/new'
-      history.pushState(null, null, myUrl)
+      history.pushState({tag: true}, null, myUrl)
     }
     $.ajax({type: 'get', url: myUrl})
     .done(function(response) {
@@ -283,9 +283,13 @@ console.log(clickEventType)
 
   })
 
+  history.replaceState({tag: true}, null, null);
+
   window.addEventListener('popstate', function(event) {
+    console.log(event)
+    if (!event.state.tag) return;
     var pathname = window.location.pathname;
-    window.location.pathname = pathname
+    window.location.pathname = pathname;
   })
 
 
