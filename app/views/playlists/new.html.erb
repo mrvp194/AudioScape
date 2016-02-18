@@ -1,14 +1,13 @@
 <% if @playlist %>
-  <ul>
   <% @playlist.errors.full_messages.each do |error_msg| %>
+    <ul>
     <li><%= error_msg %></li>
+	  </ul>
   <% end %>
-  </ul>
 <% end %>
 
-<%= form_for @playlist do |f| %>
-	Title: <%= f.text_field :title %>
-	Cover Art: <%= f.text_field :art_url %>
-
-	<%= f.submit  %>
+<%= form_for :playlists, url: {action: 'image_search'}, html: {method: 'GET', :id => 'image_search', :class => 'new_playlist'} do |f| %>
+	<%= f.text_field :title, :placeholder => 'Title' %>
+	<%= f.text_field :q, :placeholder => 'Search Cover Art' %>
+	<%= f.submit 'Search' %>
 <% end %>

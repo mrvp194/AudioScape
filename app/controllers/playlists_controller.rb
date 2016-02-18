@@ -1,5 +1,7 @@
 class PlaylistsController < ApplicationController
   respond_to :html, :js, :xml, :json
+  GOOGLE_API_KEY = 'AIzaSyAxtw4-zu7vqxoUxtk4e7QTz7nvLZOOLVY'
+  GOOGLE_SEARCH_CX = '010444673571637133719:ltyfqnzcrmy'
 
   def index
 
@@ -8,7 +10,7 @@ class PlaylistsController < ApplicationController
   def new
     @playlist = Playlist.new
 
-    render 'new', layout: false
+    render :new
   end
  
   def show
@@ -22,7 +24,7 @@ class PlaylistsController < ApplicationController
       @picture = "http://1.bp.blogspot.com/-NFIeRN1TNpU/Ukou19njwHI/AAAAAAAAARQ/iypdhkQVZvI/s200/7313935-heavy-metal-rock-and-roll-devil-horns-hand-sign-with-a-black-leather-studded-bracelet.jpg"
     end
 
-    render 'show', layout: false
+    render 'show'
 
 
 
@@ -32,9 +34,9 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.new(title: params[:playlist][:title], user_id: current_user.id, art_url: params[:playlist][:art_url])
 
     if @playlist.save
-      render 'show', layout: false
+      render 'show'
     else
-      render :new, layout: false
+      render :new
     end
   end
 
@@ -51,6 +53,17 @@ class PlaylistsController < ApplicationController
 
   def find
     @current_users_around = current_users_around
+  end
+
+  def image_search
+    @title = params[:playlists][:title]
+    if params[:playlists][:q]
+      @query = params[:playlists][:q]
+      page = params[:playlists][:page] || 1
+      @results = GoogleCustomSearchApi.search(params[:playlists][:q], {page: page, searchtype: 'image'})
+      
+    end
+    render 'image_search'
   end
 
 end

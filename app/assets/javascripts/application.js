@@ -23,7 +23,7 @@
 $(document).ready(function() {
 
 var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
-
+console.log(clickEventType)
   $('body').on(clickEventType, '#menu', function(event) {
     $('.neste').toggle();
   })
@@ -39,6 +39,7 @@ var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
     event.preventDefault()
 
     var myUrl = $(this).attr('href')
+    history.pushState(null, null, myUrl)
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.container').remove()
@@ -47,7 +48,7 @@ var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
         var $header = $(response).filter('header')
         var $container = $(response).filter('.container')
         console.log($header)
-        $('body').append($header)
+        $('body').prepend($header)
         $('body').append($container)
 
       })
@@ -57,6 +58,7 @@ var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
     event.preventDefault()
 
     var myUrl = $(this).attr('href')
+    history.pushState(null, null, myUrl)
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.container').remove()
@@ -64,44 +66,79 @@ var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
         var $header = $(response).filter('header')
         var $container = $(response).filter('.container')
 
-        $('body').append($header)
+        $('body').prepend($header)
         $('body').append($container)
       })
   })
 
 
   $('body').on('click', '#new-playlist', function(event) {
-  event.preventDefault()
-  var myUrl = $(this).attr('href')
+    event.preventDefault()
+    var myUrl = $(this).attr('href')
+    history.pushState(null, null, myUrl)
 
-  $.ajax({type: 'get', url: myUrl})
-    .done(function(response) {
-      // $('header').remove()
-      $('.container').remove()
+    $.ajax({type: 'get', url: myUrl})
+      .done(function(response) {
+        $('.container').remove()
+        $('header').remove()
 
-      $('body').append($('<div>').addClass('container row').append(response))
+        var $header = $(response).filter('header')
+        var $container = $(response).filter('.container')
+        console.log($header)
+        $('body').prepend($header)
+        $('body').append($container)
 
     })
 
   })
 
-  $('body').on('submit', '#new_playlist', function(event) {
+  $('body').on('submit', '#image_search', function(event) {
     event.preventDefault()
     var myUrl = $(this).attr('action')
-    $.ajax({type: 'post', url: myUrl, data: $(this).serialize()})
+    history.pushState(null, null, myUrl+'?'+decodeURIComponent($(this).serialize()).replace('utf8=%25E2%259C%2593&', ''))
+    // console.log(myUrl)
+    // console.log($(this).serialize())
+    $.ajax({type: 'get', url: myUrl, data: $(this).serialize()})
       .done(function(response) {
-        $('.container').remove()
-        $('body').append($('<div>').addClass('container row').append(response))
+        $('.image-results').remove()
+        $('.search-prev-next').remove()
+        var $images = $(response).find('.image-results')
+        var $prevNext = $(response).find('.search-prev-next')
+        console.log(response)
+        $('.container').append($images)
+        $('.container').append($prevNext)
+      })
+  })
+
+  $('body').on('click', '.btn', function(event) {
+    event.preventDefault()
+    var myUrl = $(this).attr('href')
+    history.pushState(null, null, myUrl)
+    $.ajax({type: 'get', url: myUrl})
+      .done(function(response) {
+        $('.image-results').remove()
+        $('.search-prev-next').remove()
+        var $images = $(response).find('.image-results')
+        var $prevNext = $(response).find('.search-prev-next')
+        $('.container').append($images)
+        $('.container').append($container)
       })
   })
 
   $('body').on('click', '#new-song', function(event) {
     event.preventDefault()
     var myUrl = $(this).attr('href')
+    history.pushState(null, null, myUrl)
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.container').remove()
-        $('body').append($('<div>').addClass('container row').append(response))
+        $('header').remove()
+
+        var $header = $(response).filter('header')
+        var $container = $(response).filter('.container')
+        console.log($header)
+        $('body').prepend($header)
+        $('body').append($container)
       })
 
   })
@@ -109,10 +146,17 @@ var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
   $('body').on('click', '.playlistCover', function(event) {
     event.preventDefault()
     var myUrl = $(this).attr('href')
+    history.pushState(null, null, myUrl)
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.container').remove()
-        $('body').append($('<div>').addClass('container row').append(response))
+        $('header').remove()
+
+        var $header = $(response).filter('header')
+        var $container = $(response).filter('.container')
+        console.log($header)
+        $('body').prepend($header)
+        $('body').append($container)
       })
 
   })
@@ -120,23 +164,52 @@ var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
   $('body').on('submit', '#search-songs', function(event) {
     event.preventDefault()
 
-     var myUrl = $(this).attr('action')
-     console.log(myUrl)
+    var myUrl = $(this).attr('action')
+    history.pushState(null, null, myUrl)
     $.ajax({type: 'get', url: myUrl, data: $(this).serialize()})
       .done(function(response) {
         $('.container').remove()
-        $('body').append($('<div>').addClass('container row').append(response))
+        $('header').remove()
+
+        var $header = $(response).filter('header')
+        var $container = $(response).filter('.container')
+        console.log($header)
+        $('body').prepend($header)
+        $('body').append($container)
       })
   })
 
   $('body').on('click', '.add-song', function(event) {
-    var auth = $(this).find('input').serialize()
     var params = $(this).attr('href').match(/\?(.+)/)[1]
     var myUrl = $(this).attr('href').match(/^(.*)\?/)[1]
+    history.pushState(null, null, $(this).attr('href'))
     event.preventDefault()
     $.post(myUrl, params, function(response) {
         $('.container').remove()
-        $('body').append($('<div>').addClass('container row').append(response))
+        $('header').remove()
+
+        var $header = $(response).filter('header')
+        var $container = $(response).filter('.container')
+        console.log($header)
+        $('body').prepend($header)
+        $('body').append($container)
+      })
+  })
+
+  $('body').on('click', '.new_playlists', function(event) {
+    var params = $(this).attr('href').match(/\?(.+)/)[1]
+    var myUrl = $(this).attr('href').match(/^(.*)\?/)[1]
+    history.pushState(null, null, $(this).attr('href'))
+    event.preventDefault()
+    $.post(myUrl, params, function(response) {
+        $('.container').remove()
+        $('header').remove()
+
+        var $header = $(response).filter('header')
+        var $container = $(response).filter('.container')
+        console.log($header)
+        $('body').prepend($header)
+        $('body').append($container)
       })
   })
 
@@ -144,13 +217,14 @@ var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
     event.preventDefault()
 
     var myUrl = $(this).attr('href')
+    history.pushState(null, null, myUrl)
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.container').remove()
         $('header').remove()
         var $header = $(response).filter('header')
         var $container = $(response).filter('.container')
-        $('body').append($header)
+        $('body').prepend($header)
         $('body').append($container)
       })
   })
@@ -159,10 +233,17 @@ var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
     event.preventDefault()
 
     var myUrl = $(this).attr('href')
+    history.pushState(null, null, myUrl)
     $.ajax({type: 'get', url: myUrl})
       .done(function(response) {
         $('.container').remove()
-        $('body').append($('<div>').addClass('container row').append(response))
+        $('header').remove()
+
+        var $header = $(response).filter('header')
+        var $container = $(response).filter('.container')
+        console.log($header)
+        $('body').prepend($header)
+        $('body').append($container)
       })
   })
 
@@ -171,14 +252,21 @@ var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
     if ($('.current_user').length > 0) {
       var id = $('.playlist_locations').attr('id')
       var myUrl = $(this).attr('href')+'/'+id+'/songs/new'
+      history.pushState(null, null, myUrl)
     }else {
       var myUrl = $(this).attr('href')+'/new'
+      history.pushState(null, null, myUrl)
     }
     $.ajax({type: 'get', url: myUrl})
     .done(function(response) {
-      $('.container').remove()
+        $('.container').remove()
+        $('header').remove()
 
-      $('body').append($('<div>').addClass('container row').append(response))
+        var $header = $(response).filter('header')
+        var $container = $(response).filter('.container')
+        console.log($header)
+        $('body').prepend($header)
+        $('body').append($container)
 
     })
   })
@@ -193,6 +281,11 @@ var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
     $('.hiddenCover').css('display', 'none')
     $('#loadMore').css('display', 'table')
 
+  })
+
+  window.addEventListener('popstate', function(event) {
+    var pathname = window.location.pathname;
+    window.location.pathname = pathname
   })
 
 

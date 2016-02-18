@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get '/playlists/find', to: 'playlists#find'
 
+  get '/playlists/image_search', to: 'playlists#image_search'
+
   resources :playlists do
     resources :locations
     resources :songs

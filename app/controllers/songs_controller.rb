@@ -6,7 +6,7 @@ class SongsController < ApplicationController
 
   def new
 
-    render 'new', layout: false
+    render 'new'
 
   end
 
@@ -28,7 +28,7 @@ class SongsController < ApplicationController
       song.save
     end
     @playlist = Playlist.find(song.playlist_id)
-    render "playlists/show/", layout: false
+    render "playlists/show/"
   end
 
   def destroy
@@ -51,7 +51,7 @@ class SongsController < ApplicationController
     })
     @playlist = Playlist.find(params[:playlist_id])
     @artist_search_results = client.get('/tracks', q: params[:songs][:title])
-    render 'search', layout: false
+    render 'search'
   end
 
 end

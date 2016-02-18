@@ -1,0 +1,35 @@
+  <% if @results && !@results.items.empty? %>
+    <div class='image-results'>
+      <% @results.items.each do |item| %>
+            <% if item['pagemap'] &&
+                  item['pagemap']['cse_thumbnail'] &&
+                  img = item.pagemap.cse_thumbnail.first %>
+              <%=link_to playlists_path(playlist: {title: @title, art_url: img.src}), :class => 'new_playlists' do %>
+	              <div class='cover' style="background-image: url(<%=img.src%>)"></div>
+              <% end %>
+            <% end %>
+      <% end %>
+    </div>
+    <div class='search-prev-next'>
+      <div class='row text-center'>
+        <% if @results.previous_page %>
+          <%= link_to '<< Previous',
+            playlists_image_search_path(playlists: {q: @query, page: @results.previous_page, title: @title}),
+            class: 'btn' %>
+        <% end %>
+        <% @results.pages.times do |i| %>
+          <%= link_to i + 1,
+            playlists_image_search_path(playlists: {q: @query, page: i+1, title: @title}),
+            class: 'btn btn-page' %>
+        <% end %>
+        <% if @results.next_page %>
+          <%= link_to 'Next >>',
+            playlists_image_search_path(playlists: {q: @query,
+                                    page: @results.next_page, title: @title}),
+            class: 'btn' %>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <h4>No results</h4>
+  <% end %>

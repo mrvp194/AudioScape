@@ -3,7 +3,7 @@
 	<p class="welcome"><%= @playlist.title %></p>
 
 
-	<img src="<%= @playlist.art_url %>"/>
+	<div class="cover-large" style="background-image:url(<%= @playlist.art_url %>)"></div>
 	<div class='playlistButtons'>
   <a id='playPlaylist' href="">Play</a>
   <%= link_to 'Delete Playlist', playlist_path(@playlist),

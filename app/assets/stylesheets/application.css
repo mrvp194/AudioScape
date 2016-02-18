@@ -348,6 +348,19 @@ input[type=submit] {
   border-radius: 25px;
 }
 
+.cover-large {
+  display: inline;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 54%;
+  min-height: 240px;
+  float: left;
+  margin-left: 3.5%;
+  margin-bottom: 5%;
+  border-radius: 25px;
+}
+
 .hiddenCover {
   display: none;
   background-position: center;
@@ -409,6 +422,12 @@ background-color: #1F2E4D !important;
 .container {
   padding-bottom: 100px;
   width: 100%;
+  text-align: center;
+}
+
+.search-prev-next {
+  display: inline-block;
+  font-size: 5vmin;
 }
 
 .userPlaylist {
@@ -419,6 +438,10 @@ background-color: #1F2E4D !important;
 #playlist {
   width: 100%;
   margin: 0 auto;
+}
+
+.image-results {
+  margin-top: 4%;
 }
 
 .new_playlist {
@@ -464,7 +487,7 @@ background-color: #1F2E4D !important;
   width: 100%;
   height: 90px;
   margin-bottom: 5%;
-  margin-top: 4%;
+  margin-top: 5%;
   color: black;
 }
 

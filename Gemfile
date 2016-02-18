@@ -42,7 +42,7 @@ gem 'kaminari'
 gem 'firebase'
 gem 'foundation-rails'
 gem 'geocoder'
-
+gem "google_custom_search_api"
 
 
 
