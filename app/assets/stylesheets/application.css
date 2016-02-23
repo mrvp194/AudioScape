@@ -248,6 +248,10 @@ input[type=submit] {
   color: #D9D9D9;
 }
 
+.view {
+  padding-top: 19%;
+}
+
 #tour-box {
   display: none;
 }
@@ -581,9 +585,7 @@ background-color: #1F2E4D !important;
   display: inline-block;
 }
 
-.playlist_find {
-  padding-top: 15%;
-}
+
 
 .edit_user_show {
   padding-top: 15%;
