@@ -452,7 +452,7 @@ background-color: #1F2E4D !important;
 
 .userPlaylist {
   width: 95%;
-  margin: 20% auto 0;
+  margin: 0 auto;
 }
 
 #playlist {
@@ -509,6 +509,7 @@ background-color: #1F2E4D !important;
   margin-bottom: 5%;
   margin-top: 8%;
   color: black;
+  display: inline-block;
 }
 
 .songcard a {
