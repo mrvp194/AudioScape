@@ -23,7 +23,6 @@
 $(document).ready(function() {
 
 var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
-console.log(clickEventType)
   $('body').on(clickEventType, '#menu', function(event) {
     $('.neste').toggle();
   })
@@ -47,7 +46,6 @@ console.log(clickEventType)
 
         var $header = $(response).filter('header')
         var $container = $(response).filter('.container')
-        console.log($header)
         $('body').prepend($header)
         $('body').append($container)
 
@@ -84,7 +82,6 @@ console.log(clickEventType)
 
         var $header = $(response).filter('header')
         var $container = $(response).filter('.container')
-        console.log($header)
         $('body').prepend($header)
         $('body').append($container)
 
@@ -96,15 +93,12 @@ console.log(clickEventType)
     event.preventDefault()
     var myUrl = $(this).attr('action')
     history.pushState({tag: true}, null, myUrl+'?'+decodeURIComponent($(this).serialize()).replace('utf8=%25E2%259C%2593&', ''))
-    // console.log(myUrl)
-    // console.log($(this).serialize())
     $.ajax({type: 'get', url: myUrl, data: $(this).serialize()})
       .done(function(response) {
         $('.image-results').remove()
         $('.search-prev-next').remove()
         var $images = $(response).find('.image-results')
         var $prevNext = $(response).find('.search-prev-next')
-        console.log(response)
         $('.container').append($images)
         $('.container').append($prevNext)
       })
@@ -136,7 +130,6 @@ console.log(clickEventType)
 
         var $header = $(response).filter('header')
         var $container = $(response).filter('.container')
-        console.log($header)
         $('body').prepend($header)
         $('body').append($container)
       })
@@ -154,7 +147,6 @@ console.log(clickEventType)
 
         var $header = $(response).filter('header')
         var $container = $(response).filter('.container')
-        console.log($header)
         $('body').prepend($header)
         $('body').append($container)
       })
@@ -173,7 +165,6 @@ console.log(clickEventType)
 
         var $header = $(response).filter('header')
         var $container = $(response).filter('.container')
-        console.log($header)
         $('body').prepend($header)
         $('body').append($container)
       })
@@ -190,7 +181,6 @@ console.log(clickEventType)
 
         var $header = $(response).filter('header')
         var $container = $(response).filter('.container')
-        console.log($header)
         $('body').prepend($header)
         $('body').append($container)
       })
@@ -207,7 +197,6 @@ console.log(clickEventType)
 
         var $header = $(response).filter('header')
         var $container = $(response).filter('.container')
-        console.log($header)
         $('body').prepend($header)
         $('body').append($container)
       })
@@ -241,7 +230,6 @@ console.log(clickEventType)
 
         var $header = $(response).filter('header')
         var $container = $(response).filter('.container')
-        console.log($header)
         $('body').prepend($header)
         $('body').append($container)
       })
@@ -264,7 +252,6 @@ console.log(clickEventType)
 
         var $header = $(response).filter('header')
         var $container = $(response).filter('.container')
-        console.log($header)
         $('body').prepend($header)
         $('body').append($container)
 
@@ -286,7 +273,6 @@ console.log(clickEventType)
   history.replaceState({tag: true}, null, null);
 
   window.addEventListener('popstate', function(event) {
-    console.log(event)
     if (!event.state.tag) return;
     var pathname = window.location.pathname;
     window.location.pathname = pathname;
@@ -354,7 +340,6 @@ console.log(clickEventType)
       e.preventDefault();
       link = $(this);
       var title = $($($(this).children()[1]).children()[0]).clone()
-      console.log(title)
       var a = $('<a>'+title[0].innerHTML+'</a>')
       title[0].innerHTML = ''
       a.addClass('clickable')
@@ -403,16 +388,13 @@ console.log(clickEventType)
       track = playlist.find('.songcard .song')[0]
       titles = $('.title').clone()
       titles.each(function(i,t) {
-        console.log(t)
         var a = $('<a>'+t.innerHTML+'</a>')
-        console.log(a.innerHTML)
         t.innerHTML = ''
         a.addClass('clickable')
         $(t).append(a)
         $('#tracks').append(t)              
       })
       len = tracks.length;
-      console.log(len)
       link = tracks[0]
       $(track).parent().addClass('active')
       $(track).parent().siblings().removeClass('active')
@@ -458,7 +440,6 @@ console.log(clickEventType)
         $('#pause').toggle(); 
         if(current == len){
             current = 0;
-            console.log('done')
             link = $('#tracks').find('.title')[0];
         }else{
             link = $('#tracks').find('.title')[current];
