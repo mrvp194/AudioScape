@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
  def current_users_around
     @users_around = current_user.nearbys(10)
     @current_users_around = @users_around.where(updated_at: (10.day.ago..Time.now))
+    if @current_users_around.length == 0
+      @current_users_around = User.order('created_at ASC').limit(10)
+    end
+    return @current_users_around
   end
 
   helper_method :current_users_around

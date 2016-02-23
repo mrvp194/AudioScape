@@ -121,7 +121,7 @@ console.log(clickEventType)
         var $images = $(response).find('.image-results')
         var $prevNext = $(response).find('.search-prev-next')
         $('.container').append($images)
-        $('.container').append($container)
+        $('.container').append($prevNext)
       })
   })
 
