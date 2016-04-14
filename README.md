@@ -35,4 +35,4 @@ Dicko Sow
 
 
 ## Have a look!
-[Heroku Link](http://audioscape1.herokuapp.com){target="_blank"}
+[Heroku Link](http://audioscape1.herokuapp.com)
